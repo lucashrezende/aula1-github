@@ -1,0 +1,10 @@
+
+public class Main {
+	public static void main(String args[]) {
+
+		Retangulo ret = new Retangulo();
+		ret.setBase(10);
+		ret.setAltura(20);
+		ret.getDescricao();
+	}
+}

@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+	public static void main(String args[]) {
+
+		Retangulo retangulo = new Retangulo();
+		retangulo.setNomeFigura("Retângulo");
+		retangulo.setBase(10);
+		retangulo.setAltura(20);
+		System.out.println(retangulo.getDescricao());
+		
+		Triangulo triangulo = new Triangulo();
+		triangulo.setNomeFigura("Triângulo");
+		triangulo.setBase(10);
+		triangulo.setAltura(20);
+		System.out.println(triangulo.getDescricao());
+		
+		Circulo circulo = new Circulo();
+		circulo.setNomeFigura("Círculo");
+		circulo.setRaio(2);
+		System.out.println(circulo.getDescricao());
+		
+		List<FiguraGeometrica> listaFigurasGeometricas = new ArrayList<>();
+		listaFigurasGeometricas.add(retangulo);
+		listaFigurasGeometricas.add(triangulo);
+		listaFigurasGeometricas.add(circulo);
+
+		for(FiguraGeometrica figuraGeometrica : listaFigurasGeometricas) {
+			System.out.println(figuraGeometrica.getDescricao());
+			System.out.printf( "Area da figura: %.2f \n", figuraGeometrica.getArea() );
+		}
+		
+	}
+}

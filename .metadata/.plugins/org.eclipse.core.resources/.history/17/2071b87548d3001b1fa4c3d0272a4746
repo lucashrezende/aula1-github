@@ -1,0 +1,153 @@
+public class Programa {
+	  public static void main(String[] args) {
+		    Aluno aluno = new Aluno("Pedro Brito", 10, 6);
+		    System.out.println(aluno.toString());
+		  }
+		}
+		class Aluno{
+		  private String nome;
+		  private double notaUm;
+		  private double notaDois;
+
+		  public double getMedia(){
+		    return (getNotaUm() + getNotaDois()) / 2;
+		  }
+
+		  //toString para representação do objeto em forma de String.
+		  @Override
+		  public String toString() {
+		    String texto = "\nNome: "+getNome()+"\n"
+		      +"\nNota 1: "+getNotaUm()+"\n"
+		      +"\nNota 2: "+getNotaDois()+"\n"
+		      +"\nMedia : "+getMedia()+"\n"
+		      +"\nStatus: "+(getMedia() > 7 ? "Aprovado":"Reprovado")+"\n";
+		    return texto;
+		  }
+		  //sobrescrita do construtor
+		  public Aluno() {}
+		  public Aluno(String nome, double notaUm, double notaDois) {
+		    setNome(nome);
+		    setNotaUm(notaUm);
+		    setNotaDois(notaDois);
+		  }
+		  public String getNome() {
+		    return nome;
+		  }
+		  public void setNome(String nome) {
+		    this.nome = nome;
+		  }
+		  public double getNotaUm() {
+		    return notaUm;
+		  }
+		  public void setNotaUm(double notaUm) {
+		    this.notaUm = notaUm;
+		  }
+		  public double getNotaDois() {
+		    return notaDois;
+		  }
+		  public void setNotaDois(double notaDois) {
+		    this.notaDois = notaDois;
+		  }
+		}
+		Perceba que o toString, quando é acionado, traz em forma de String (texto) os valores que estão em seus atributos, inclusive o que é calculado por método.
+
+		Não existe uma regra para implementação do toString.  Portanto, faça da forma que considerar melhor a representação textual.
+
+		O Método Equals
+		Imagine a seguinte situação: Você deve comparar se um objeto do tipo pessoa é igual a outro. Suponha que uma pessoa tenha nome e cpf. Observe o trecho de código na Tabela 2.
+
+		Tabela 2 – Exemplo de codificação Java de comparação.
+
+		Programa em Java:Comparacao.java
+		public class Comparacao {
+		  public static void main(String[] args) {
+		      Pessoa p1 = new Pessoa("José Silva","123.456.789-10");
+		      Pessoa p2 = new Pessoa("José Silva","123.456.789-10");
+		//L1  if(p1 == p2){
+		//L2    System.out.println("As pessoas são iguais!");
+		//L3  } else{
+		//L4    System.out.println("As pessoas são diferentes!");
+		        }
+		      }
+		}
+		class Pessoa{
+		  private String nome;
+		  private String cpf;
+		  //sobre carga do método construtor
+		  public Pessoa() {}
+		  public Pessoa (String nome, String cpf){
+		    setNome(nome);
+		    setCpf(cpf);
+		  }
+		  //métodos acessores
+		  public String getNome() {
+		    return nome;
+		  }
+		  public void setNome(String nome) {
+		    this.nome = nome;
+		  }
+		  public String getCpf() {
+		    return cpf;
+		  }
+		  public void setCpf(String cpf) {
+		    this.cpf = cpf;
+		  }
+		}
+		Analisando a codificação acima, perceba que dois objetos do tipo Pessoa foram criados exatamente com os mesmos valores. Significativamente, eles são iguais. Você acha que vai acontecer o quê? Será impresso que as pessoas são iguais ou diferentes? Rode este programa no seu IDE para verificar o que acontece.
+
+		E aí? Surpreso? Pois é… Imprimiu que as pessoas são diferentes. Certo?
+
+		O primeiro erro da codificação acima é que na L1 está sendo utilizado o operador de igualdade == para comparação. Nada mais justo. Entretanto, este operador, quando aplicado com objetos, compara endereço de memória. A Figura 1 representa o que aconteceu em memória no exemplo da Tabela 1.
+
+		Figura 1 - Representação da memória do exemplo da Tabela 1
+
+		{Figura}
+		Perceba que os endereços alocados para os objetos são diferentes. Logo, a comparação retornará falso. E os objetos são declarados como diferentes.
+
+		A comparação de endereço de memória para a programação de alto nível e para o que queremos pouco importa, não é verdade? Mas o que fazer? Resposta: Trocar a comparação por equals, ao invés de == . Vamos lá?
+
+		Troque a comparação que está sendo feita em L1 por if(p1.equals(p2)) e observe o que acontece.
+
+		Viu? Não mudou nada, pois continuou dizendo que são diferentes. Veja… você definiu o método equals? Não. Não existe este método na codificação presente na Tabela 1. Como você conseguiu chamá-lo então? Este método está sendo herdado da classe Object. E quando ele é herdado, o comportamento padrão deste método é comparar também o endereço de memória. Mas o que fazer? Lembra-se de que na última aula você aprendeu que uma subclasse, quando herda características e ações, pode sobrescrever (especializar) um determinado método a sua maneira?  Quando sobrescrito, ele se comportará conforme o redefinido na subclasse. Então… Preparado para sobrescrever o método equals?
+
+		Olhando para a classe Pessoa, qual seria um atributo candidato a diferenciar um objeto de outro? O CPF, não é mesmo? Pois bem, devemos sobrescrever o método equals, para que ele compare os cpfs dos objetos como vistas a determinar se são iguais ou diferentes. Acompanhe a Tabela 3 que apresenta uma proposta da classe pessoa com a sobrescrita do método equals.
+
+		Tabela 3 – Proposta de método equals para a classe Pessoa.
+
+		Programa em Java: Class Pessoa
+		class Pessoa{
+		  private String nome;
+		  private String cpf;
+		  //sobre carga do método construtor
+		  public Pessoa() {}
+		  public Pessoa (String nome, String cpf){
+		    setNome(nome);
+		    setCpf(cpf);
+		  }
+		  //métodos acessores
+		  public String getNome() {
+		    return nome;
+		  }
+		  public void setNome(String nome) {
+		    this.nome = nome;
+			}
+		  public String getCpf() {
+		    return cpf;
+		  }
+		  public void setCpf(String cpf) {
+		    this.cpf = cpf;
+		  }
+		  @Override
+		  public boolean equals(Object obj) {
+		    if(obj instanceof Pessoa){// obj é uma pessoa?
+		      //casting de Object para Pessoa.
+		      Pessoa param = (Pessoa) obj;
+		      //usando o equals de String, não confunda.
+		      if(getCpf().equals(param.getCpf())){
+		        return true;//são iguais
+		      }else
+		      return false;//são diferentes
+		    }
+		    return false;//Se não for pessoa já retorna.
+		  }
+		}

@@ -1,0 +1,20 @@
+
+public class Main {
+	public static void main(String args[]) {
+
+		Retangulo ret = new Retangulo();
+		ret.getNomeFigura("Retangulo");
+		ret.setBase(10);
+		ret.setAltura(20);
+		System.out.println(ret.getDescricao());
+		
+		Triangulo tri = new Triangulo();
+		tri.setBase(10);
+		tri.setAltura(20);
+		System.out.println(tri.getDescricao());
+		
+		Circulo cir = new Circulo();
+		cir.setRaio(2);
+		System.out.println(cir.getDescricao());
+	}
+}

@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\Users\Pichau\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2829319499.index
+\projeto\src\main\java
+C:\Users\Pichau\eclipse-workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\954091115.index
+\ProjetoServletsTurmaPW\src

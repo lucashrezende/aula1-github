@@ -1,0 +1,34 @@
+
+public class Retangulo extends FiguraGeometrica {
+	private double base;
+	private double altura;
+
+	@Override
+	public double getArea() {
+		return getBase() * getAltura();
+	}
+	
+	@Override
+	public String getDescricao() {
+		String texto = "Altura: " + getAltura() + "\tBase: " + getBase() + "\t¡rea: " + getArea();
+		return texto;
+	}
+	
+	public double getBase() {
+		return base;
+	}
+
+	public void setBase(double base) {
+		this.base = base;
+	}
+
+	public double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(double altura) {
+		this.altura = altura;
+	}
+
+
+}

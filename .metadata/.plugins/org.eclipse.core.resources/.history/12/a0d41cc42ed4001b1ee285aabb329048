@@ -1,0 +1,33 @@
+	public class Triangulo extends FiguraGeometrica {
+		private double base;
+		private double altura;
+
+		@Override
+		public double getArea() {
+			return (getBase() * getAltura())/2;
+		}
+
+		@Override
+		public String getDescricao() {
+			String texto = "Dados do triangulo\nAltura: " + getAltura() + "\tBase: " + getBase() + "\t¡rea: " + getArea(); + "\n"
+			return texto;
+		}
+
+		public double getBase() {
+			return base;
+		}
+
+		public void setBase(double base) {
+			this.base = base;
+		}
+
+		public double getAltura() {
+			return altura;
+		}
+
+		public void setAltura(double altura) {
+			this.altura = altura;
+		}
+
+	}
+

@@ -1,0 +1,17 @@
+
+public class FiguraGeometrica {
+	private String nomeFigura;
+
+	
+	
+	public String getNomeFigura() {
+		return nomeFigura;
+	}
+
+	public void setNomeFigura(String nomeFigura) {
+		this.nomeFigura = nomeFigura;
+	}
+	
+	
+	
+}
